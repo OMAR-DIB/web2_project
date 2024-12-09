@@ -14,16 +14,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $filePath = null;
     if (!empty($_FILES['file']['name'])) {
-        $fileName = basename($_FILES['file']['name']);
+        $fileName = time() . "_" . basename($_FILES['file']['name']); // Add timestamp for unique file names
         $targetDir = "uploads/";
         $filePath = $targetDir . $fileName;
-        move_uploaded_file($_FILES['file']['tmp_name'], $filePath);
+
+        // Move file and check for success
+        if (!move_uploaded_file($_FILES['file']['tmp_name'], $filePath)) {
+            echo "Error uploading file.";
+            exit();
+        }
     }
 
-    $query = "INSERT INTO items (name, description, file_path, user_id) VALUES ('$name', '$description', '$filePath', $user_id)";
-    mysqli_query($conn, $query);
-
-    header("Location: index.php");
+    $query = "INSERT INTO items (name, description, file_path, user_id) 
+              VALUES ('$name', '$description', '$filePath', $user_id)";
+    if (mysqli_query($conn, $query)) {
+        header("Location: index.php");
+    } else {
+        echo "Error: " . mysqli_error($conn);
+    }
 }
 ?>
 
@@ -34,17 +42,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/create.css">
-    <title>Document</title>
+    <title>Create Item</title>
 </head>
 
 <body>
     <form method="POST" enctype="multipart/form-data">
-        <input type="text" name="name" placeholder="Name" required>
+        <input type="text" name="name" placeholder="Item Name" required>
         <textarea name="description" placeholder="Description" required></textarea>
         <input type="file" name="file">
         <button type="submit">Create</button>
     </form>
-
 </body>
 
 </html>

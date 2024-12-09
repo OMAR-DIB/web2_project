@@ -42,7 +42,9 @@ $result = mysqli_query($conn, $query);
                 <td><?= $row['description'] ?></td>
                 <td>
                     <?php if ($row['file_path']): ?>
-                        <a href="<?= $row['file_path'] ?>" target="_blank">View File</a>
+                        <a href="<?= $row['file_path'] ?>" download>Download File</a>
+                    <?php else: ?>
+                        No File
                     <?php endif; ?>
                 </td>
                 <td>
@@ -52,6 +54,7 @@ $result = mysqli_query($conn, $query);
             </tr>
         <?php endwhile; ?>
     </table>
+
 
 </body>
 
