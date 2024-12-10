@@ -1,68 +1,130 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f1f1f1;
-    margin: 0;
-    padding: 0;
-}
-
-header {
-    background: #343a40;
-    color: white;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header a {
-    color: white;
-    text-decoration: none;
-    padding: 5px 10px;
-    border: 1px solid white;
-    border-radius: 3px;
-}
-
-header a:hover {
-    background: white;
-    color: #343a40;
-}
-
-table {
-    width: 80%;
-    margin: 20px auto;
-    border-collapse: collapse;
-    background: white;
-}
-
-table th, table td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
-}
-
-table th {
-    background: #343a40;
-    color: white;
-}
-
-a {
-    text-decoration: none;
-    color: #007bff;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
+/* General Reset */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+a,
+table,
+input,
 button {
-    background: #28a745;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 3px;
-    cursor: pointer;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
-button:hover {
-    background: #218838;
+/* Body Styling */
+body {
+  position: relative;
+  background-color: #f8f9fa;
+  color: #333333;
+  padding: 20px;
+}
+
+/* Welcome Message */
+p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* Logout and Create Links */
+p a,
+a {
+  text-decoration: none;
+  color: #007bff;
+  font-size: 14px;
+  margin-left: 10px;
+}
+p {
+  font-size: 24px;
+}
+
+p a:hover,
+a:hover {
+  text-decoration: underline;
+}
+
+/* Create New Item Button */
+a[href="create.php"],
+a[href="logout.php"] {
+  display: inline-block;
+  margin-bottom: 20px;
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-size: 14px;
+  text-align: center;
+}
+
+a[href="create.php"]:hover {
+  background-color: #218838;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid #dddddd;
+  font-size: 14px;
+}
+
+th {
+  background-color: #007bff;
+  color: white;
+  text-transform: uppercase;
+}
+
+td {
+  background-color: #f9f9f9;
+}
+
+/* File Links */
+td a {
+  color: #28a745;
+  font-weight: bold;
+}
+
+td a:hover {
+  color: #218838;
+  text-decoration: underline;
+}
+
+/* Action Links */
+td a:first-child {
+  color: #007bff;
+  margin-right: 10px;
+}
+
+td a:last-child {
+  color: #dc3545;
+}
+
+td a:last-child:hover {
+  color: #c82333;
+}
+a[href="logout.php"] {
+  position: absolute;
+  right: 3%;
+  top: 8%;
+}
+/* Confirm Dialog Styling */
+td a[onclick] {
+  cursor: pointer;
 }
